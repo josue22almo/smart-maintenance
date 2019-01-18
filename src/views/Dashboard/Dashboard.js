@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
-import { Bar, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {
   Card,
   CardBody,
   CardColumns,
   CardHeader,
-  CardTitle,
-  Col,
-  Row,
-  Alert,
   Badge, Pagination, PaginationItem, PaginationLink, Table
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
-import * as moment from "moment";
 import Data from '../MachinesData'
 
 const brandSuccess = getStyle('--success')
 const brandInfo = getStyle('--info')
 // Main Chart
 const pressureLine = {
-  /*var currentdate = new Date();
-  var datetime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":";
-  var seconds = currentdate.getSeconds();
-  labels: [(datetime + (seconds - 12)).toString(), (datetime + (seconds - 10)).toString(), (datetime + (seconds - 8)).toString(), (datetime + (seconds - 6)).toString(), (datetime + (seconds - 4)).toString(), (datetime + (seconds - 2)).toString(), (datetime + seconds).toString()],*/
   labels: ['-12', '-10', '-8', '-6', '-4', '-2', '0'],
   datasets: [
     {
@@ -75,19 +66,6 @@ const temperatureLine = {
     },
   ],
 };
-
-const options = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false
-}
-
-//Random Numbers
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 var elements = 7;
 var machines = 5;
@@ -421,7 +399,7 @@ class Dashboard extends Component {
     const files = [];
     for(const notification of this.state.notifications) {
       var priority = "";
-      if (notification.color == "danger") priority = "Muy Alta";
+      if (notification.color === "danger") priority = "Muy Alta";
       else priority = "Alta";
       files.push(<tr>
                   {/*<td align="center">{random(1,4000)}</td>*/}
